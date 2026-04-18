@@ -1,0 +1,44 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Adjustfile (A2ML Canonical) — drift tolerances + corrective actions
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Paired runner: adjust.ncl | Paired K9: adjust.k9.ncl (v1.0.0)
+
+@abstract:
+NatSci Studio drift tolerances. Advisory (non-gating). Catches
+cumulative drift — things that don't breach a hard limit any single
+time but creep over sessions. K9 component tracks per-tolerance trend
+and flags accelerating drift.
+@end
+
+[[tolerances]]
+id = "haskell-warnings-clean"
+description = "Haskell build emits zero -Wall warnings"
+measure = "cabal build all 2>&1 | grep -c '^.*:.*: warning:' || echo 0"
+tolerance_band = "= 0"
+on_exceeded = "warn_and_attempt_fix"
+status = "declared"
+
+[[tolerances]]
+id = "hype-word-count-in-docs"
+description = "Count of hype-register words in README + docs stays bounded"
+measure = "grep -criE '\\b(revolutionary|transformative|unprecedented|game.changing|paradigm|disrupt)\\b' README.adoc docs/ 2>/dev/null | awk -F: '{s+=$2} END {print s+0}'"
+tolerance_band = "≤ 2"
+on_exceeded = "warn_and_record"
+status = "declared"
+notes = "A5 grandiose-scale-hype trend tracking. Accelerating drift flagged at session close."
+
+[[tolerances]]
+id = "sbom-freshness-days"
+description = "Days since last SBOM regeneration"
+measure = "test -f SBOM.json && echo $(( ($(date +%s) - $(date -r SBOM.json +%s)) / 86400 )) || echo 999"
+tolerance_band = "≤ 30"
+on_exceeded = "warn_and_attempt_fix"
+status = "declared"
+
+[[tolerances]]
+id = "wcag-contrast-todos"
+description = "Pending WCAG contrast fixes in the TUI attr map"
+measure = "grep -rc 'TODO.*contrast\\|FIXME.*contrast' tools/console/src/ 2>/dev/null | awk -F: '{s+=$2} END {print s+0}'"
+tolerance_band = "≤ 3"
+on_exceeded = "warn_and_record"
+status = "declared"

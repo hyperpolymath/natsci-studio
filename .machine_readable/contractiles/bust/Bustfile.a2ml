@@ -1,0 +1,77 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Bustfile (A2ML Canonical) — hard-stop / must-not-run declarations
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Paired runner: bust.ncl | Paired K9: bust.k9.ncl (v1.0.0)
+
+@abstract:
+NatSci Studio hard-stops. Declares things that MUST NOT appear in the
+tree. Complement to Mustfile: Mustfile says "this must hold", Bustfile
+says "this must not be here". Catches AI-assistant reintroduction
+attempts of banned / retired / out-of-scope patterns.
+@end
+
+## Banned-language reintroduction triggers
+
+[[hard_stops]]
+id = "cpp-reintroduction"
+description = "C++ sources appearing anywhere"
+probe = "find . -type f \\( -name '*.cpp' -o -name '*.cc' -o -name '*.cxx' -o -name '*.hpp' \\) -not -path './.git/*' 2>/dev/null | grep -q ."
+status = "declared"
+severity = "critical"
+notes = "Catches 'lightweight C++ core for performance' AI pattern. Rust/SPARK is the sanctioned systems-language alternative."
+
+[[hard_stops]]
+id = "electron-reintroduction"
+description = "Electron present in package descriptors or source"
+probe = "grep -riE '\\belectron\\b' --include='*.json' --include='*.toml' --include='*.hs' . 2>/dev/null | grep -v 'banned\\|Trustfile\\|Mustfile\\|Bustfile' | grep -q ."
+status = "declared"
+severity = "critical"
+notes = "Catches 'web-based or Electron app' AI pattern."
+
+[[hard_stops]]
+id = "python-reintroduction"
+description = "Python .py sources"
+probe = "find . -type f -name '*.py' -not -path './.git/*' 2>/dev/null | grep -q ."
+status = "declared"
+severity = "high"
+
+[[hard_stops]]
+id = "nodejs-package-json"
+description = "package.json at repo root (Node intrusion; Deno uses deno.json)"
+probe = "test -f package.json"
+status = "declared"
+severity = "high"
+
+[[hard_stops]]
+id = "go-reintroduction"
+description = "Go sources"
+probe = "find . -type f -name '*.go' -not -path './.git/*' 2>/dev/null | grep -q ."
+status = "declared"
+severity = "high"
+
+## Out-of-scope pattern triggers
+
+[[hard_stops]]
+id = "monolithic-engine-directory"
+description = "engine/ or similar directory — NatSci Studio is engine-AGNOSTIC per Intentfile"
+probe = "test -d engine || test -d core/engine || test -d natsci-engine"
+status = "declared"
+severity = "high"
+notes = "Sandbox/meta-engine is a FAR-HORIZON wish in Intentfile. Creating an engine directory now without amendment trips this Bust."
+
+[[hard_stops]]
+id = "commercial-hype-language"
+description = "Commercial / monetisation / revolutionary-scale language in project docs"
+probe = "grep -riE '\\b(billionaire|revolutionary|game.changer|disrupt|monetis(e|ation))\\b' README.adoc docs/ 2>/dev/null | grep -v 'banned\\|Bustfile' | grep -q ."
+status = "declared"
+severity = "medium"
+notes = "A5 grandiose-scale-hype defense. Le Chat 2026-03-14 used the 'billionaire in six weeks' / 'transformative leap' / 'revolutionary' register. This probe catches reintroduction of that register in project docs."
+
+## Expiry
+
+[[hard_stops]]
+id = "stale-ai-manifest"
+description = "0-AI-MANIFEST.a2ml not touched in 12 months (stale universal entry point)"
+probe = "test $(find 0-AI-MANIFEST.a2ml -mtime +365 2>/dev/null | wc -l) -eq 1"
+status = "declared"
+severity = "low"

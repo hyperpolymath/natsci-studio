@@ -1,0 +1,103 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Mustfile (A2ML Canonical) — release-blocking invariants for NatSci Studio
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Paired runner: must.ncl | Paired K9: must.k9.ncl (v1.0.0)
+
+@abstract:
+NatSci Studio release-blocking invariants. Each is a hard gate. Breach
+blocks merge until resolved or varied by a maintainer-approved variance
+with explicit severity acknowledgement.
+@end
+
+## File-level invariants
+
+[[invariants]]
+id = "spdx-header-every-source-file"
+description = "Every source file carries an SPDX-License-Identifier"
+probe = "! grep -rL 'SPDX-License-Identifier' libs tools --include='*.hs' --include='*.rs' --include='*.ncl' --include='*.ts' --include='*.js' 2>/dev/null | grep -q ."
+severity = "critical"
+
+[[invariants]]
+id = "licence-file-present"
+description = "Root LICENSE file exists (AGPL-3.0-or-later)"
+probe = "test -r LICENSE && grep -q 'AGPL' LICENSE"
+severity = "critical"
+
+[[invariants]]
+id = "ai-manifest-present"
+description = "0-AI-MANIFEST.a2ml is the universal AI entry point"
+probe = "test -r 0-AI-MANIFEST.a2ml"
+severity = "critical"
+
+## Language-policy invariants (the main drift catchment)
+
+[[invariants]]
+id = "no-cpp-sources"
+description = "No .cpp / .cc / .cxx / .hpp / .hxx anywhere (banned estate-wide; Rust/SPARK is the alt)"
+probe = "! find . -type f \\( -name '*.cpp' -o -name '*.cc' -o -name '*.cxx' -o -name '*.hpp' -o -name '*.hxx' \\) -not -path './.git/*' 2>/dev/null | grep -q ."
+severity = "critical"
+notes = "Catches the 'lightweight C++ core for performance' AI-suggestion pattern."
+
+[[invariants]]
+id = "no-electron"
+description = "No Electron references in descriptors or source"
+probe = "! grep -riE '\\belectron\\b' --include='*.json' --include='*.toml' --include='*.hs' . 2>/dev/null | grep -v 'banned\\|Mustfile\\|Bustfile\\|Trustfile' | grep -q ."
+severity = "critical"
+
+[[invariants]]
+id = "no-nodejs-runtime-deps"
+description = "No package.json for runtime deps (Deno only)"
+probe = "! test -f package.json"
+severity = "high"
+
+[[invariants]]
+id = "no-python-sources"
+description = "No .py files (Python banned estate-wide per 2026-01-03)"
+probe = "! find . -type f -name '*.py' -not -path './.git/*' 2>/dev/null | grep -q ."
+severity = "high"
+
+[[invariants]]
+id = "no-typescript-sources"
+description = "No .ts / .tsx files (ReScript only for typed JS)"
+probe = "! find . -type f \\( -name '*.ts' -o -name '*.tsx' \\) -not -path './.git/*' 2>/dev/null | grep -q ."
+severity = "medium"
+
+[[invariants]]
+id = "no-go-sources"
+description = "No .go files (Rust is the estate alternative)"
+probe = "! find . -type f -name '*.go' -not -path './.git/*' 2>/dev/null | grep -q ."
+severity = "high"
+
+## Monorepo-structure invariants
+
+[[invariants]]
+id = "monorepo-structure-four-dirs"
+description = "The four canonical directories (libs, tools, demos, docs) are present"
+probe = "test -d libs && test -d tools && test -d demos && test -d docs"
+severity = "high"
+
+[[invariants]]
+id = "no-monolithic-engine-directory"
+description = "No engine/ directory — NatSci Studio is engine-agnostic per Intentfile; sandbox is a far wish, not an intent"
+probe = "! test -d engine && ! test -d core/engine && ! test -d natsci-engine"
+severity = "high"
+
+## Compliance-machinery invariants (trident coherence)
+
+[[invariants]]
+id = "trident-intend-complete"
+description = "intend trident has all 4 files"
+probe = "test -r .machine_readable/contractiles/intend/Intentfile.a2ml && test -r .machine_readable/contractiles/intend/intend.ncl && test -r .machine_readable/contractiles/intend/intend.k9.ncl && test -r .machine_readable/contractiles/intend/intend.manifest.a2ml"
+severity = "critical"
+
+[[invariants]]
+id = "trident-trust-complete"
+description = "trust trident has all 4 files"
+probe = "test -r .machine_readable/contractiles/trust/Trustfile.a2ml && test -r .machine_readable/contractiles/trust/trust.ncl && test -r .machine_readable/contractiles/trust/trust.k9.ncl && test -r .machine_readable/contractiles/trust/trust.manifest.a2ml"
+severity = "critical"
+
+[[invariants]]
+id = "trident-must-complete"
+description = "must trident has all 4 files"
+probe = "test -r .machine_readable/contractiles/must/Mustfile.a2ml && test -r .machine_readable/contractiles/must/must.ncl && test -r .machine_readable/contractiles/must/must.k9.ncl && test -r .machine_readable/contractiles/must/must.manifest.a2ml"
+severity = "critical"

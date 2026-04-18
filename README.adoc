@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= NatSci Studio
+:toc:
+:toc-placement: preamble
+
+A standards-compliant monorepo of natural-sciences libraries with a
+Haskell-backed console (NatTrans Console) for minting, verifying, and
+observing scientific modules. Educational / research toolkit. Not a
+game engine, not a web app, not an Electron wrapper, not a commercial
+venture.
+
+**Status: alpha** — scaffolding phase.
+
+== Repo layout
+
+[source]
+----
+libs/    # natural-sciences libraries (one per topic)
+tools/   # NatTrans Console + tooling
+demos/   # minimal runnable demonstrations
+docs/    # human-readable documentation
+.machine_readable/
+  contractiles/   # the CONTRACT — 6 verb tridents that bind this project
+  6a2/            # descriptive state (what IS)
+  anchors/        # recalibration records (multiple over time)
+----
+
+== Contract-first
+
+NatSci Studio is governed by a full set of contractile tridents under
+`.machine_readable/contractiles/`. Each of the six verbs (intend,
+trust, must, bust, adjust, dust) ships as a trident: A2ML declaration
++ Nickel runner + K9 trust-tier component + coherence manifest.
+
+These are not documentation; they are the CONTRACT. AI agents working
+on this repo are bound by them. See each Verbfile under
+`.machine_readable/contractiles/<verb>/`.
+
+== License
+
+AGPL-3.0-or-later (per hyperpolymath "son-co-developed project" rule —
+same pattern as IDApTIK + Airborne Submarine Squadron). See `LICENSE`.
+
+== Author
+
+Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+Co-developed with son.

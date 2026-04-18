@@ -1,0 +1,91 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Trustfile (A2ML Canonical) — security + threat model for NatSci Studio
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Paired runner: trust.ncl | Paired K9: trust.k9.ncl (v1.0.0)
+#
+# NatSci Studio is a local-TUI educational toolkit — do NOT inherit the
+# heavyweight web-facing Trustfile exemplar. Primary adversary is
+# scope-creep AI assistance and educational misinformation.
+
+@abstract:
+Trust boundary + threat model for NatSci Studio. Local TUI + Haskell
+libraries. Different threat surface from a web service. Primary
+concerns: AI scope-creep, educational claim accuracy, toolchain discipline.
+@end
+
+## Threat model
+
+[[threat_model]]
+adversary = "scope_creep_AI_assistant"
+description = "Gemini / Copilot / Le Chat / other AI assistants suggesting features outside declared scope, hyping inflated claims, or proposing banned languages / frameworks."
+stakes = "project-identity-integrity"
+mitigations = [
+  "Intentfile north-star narrows declared scope; amendments required for shifts.",
+  "Mustfile language-policy invariants block C++, Python, Electron, Node at merge.",
+  "Bustfile hard-stops catch reintroduction of banned patterns.",
+  "K9 on_open threat_model_foregrounding re-renders this block before any weakening suggestion lands.",
+  "Accountability pledge requires AI to refuse off-contract actions under enthusiasm.",
+]
+
+[[threat_model]]
+adversary = "educational_misinformation"
+description = "Libraries publish natural-science claims (constants, formulas, simulation outputs) incorrectly or without citation."
+stakes = "credibility"
+mitigations = [
+  "Every physics/chemistry constant cites its CODATA / IUPAC / NIST source.",
+  "Every formula cites textbook / paper / standard.",
+  "Verify.hs checks citation presence at build time.",
+]
+
+[[threat_model]]
+adversary = "supply_chain_compromise"
+description = "Dependency compromise introduces malicious code."
+stakes = "local-machine-integrity"
+mitigations = [
+  "Nix flakes for hermetic builds with hash-pinned deps.",
+  "Chainguard Wolfi base images for any containerised tool.",
+  "SBOM generated per library.",
+]
+
+## Language-policy verifications
+
+[[verifications]]
+id = "language-policy-no-cpp"
+description = "No C++ sources anywhere"
+probe = "! find . -type f \\( -name '*.cpp' -o -name '*.cc' -o -name '*.cxx' -o -name '*.hpp' \\) -not -path './.git/*' 2>/dev/null | grep -q ."
+severity = "critical"
+
+[[verifications]]
+id = "language-policy-no-electron"
+description = "No Electron in package descriptors or source"
+probe = "! grep -riE '\\belectron\\b' --include='*.json' --include='*.toml' . 2>/dev/null | grep -v 'banned\\|Trustfile\\|Mustfile\\|Bustfile' | grep -q ."
+severity = "critical"
+
+[[verifications]]
+id = "language-policy-approved-only"
+description = "Source files in approved languages only (Haskell, Rust, Nickel, Deno/ReScript, Bash)"
+probe = "! find . -type f -not -path './.git/*' \\( -name '*.py' -o -name '*.cpp' -o -name '*.ts' -o -name '*.go' -o -name '*.kt' -o -name '*.swift' \\) 2>/dev/null | grep -q ."
+severity = "high"
+
+## Provenance / citation
+
+[[verifications]]
+id = "physics-constants-cited"
+description = "Every physics constant in libs/ carries a CODATA / NIST / IUPAC citation"
+probe = "test ! -d libs || ! (grep -rL 'CODATA\\|NIST\\|IUPAC' libs --include='*.hs' 2>/dev/null | xargs -I {} grep -l 'constant' {} 2>/dev/null | grep -q .)"
+severity = "high"
+
+## SPDX hygiene
+
+[[verifications]]
+id = "spdx-headers-everywhere"
+description = "Every source file has an SPDX-License-Identifier"
+probe = "! grep -rL 'SPDX-License-Identifier' libs tools demos --include='*.hs' --include='*.rs' --include='*.ncl' 2>/dev/null | grep -q ."
+severity = "high"
+
+## Safe-hacking (none yet)
+
+[[safe_hacking]]
+scope = "this-repo-only"
+allowed_probe_classes = [ "fuzz", "property_test" ]
+probes = [ ]

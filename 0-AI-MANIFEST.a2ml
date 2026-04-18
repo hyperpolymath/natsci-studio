@@ -1,0 +1,69 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+#
+# 0-AI-MANIFEST.a2ml — universal entry point for ALL AI agents
+# (Claude / Gemini / Copilot / Le Chat / any future model).
+#
+# READ THIS FILE FIRST. Any AI agent touching this repo is BOUND by
+# the contractiles under .machine_readable/contractiles/ as read at
+# session-open. See that dir's README.adoc + INDEX.a2ml.
+
+[metadata]
+version = "0.1.0"
+last-updated = "2026-04-18"
+license = "AGPL-3.0-or-later"
+
+[project]
+name = "natsci-studio"
+purpose = "Standards-compliant monorepo of natural-sciences libraries with a Haskell-backed TUI console (NatTrans Console) for minting + verifying + observing scientific modules."
+scope = "educational / research toolkit"
+anti-scope = [
+  "game engine (engine-agnostic; sandbox is a far wish, not an intent)",
+  "web app",
+  "electron wrapper",
+  "commercial venture / monetisation vehicle",
+]
+co-developed-with = "son"
+
+[canonical-locations]
+contractiles = ".machine_readable/contractiles/"
+state-descriptive = ".machine_readable/6a2/"
+recalibration-records = ".machine_readable/anchors/"
+source-libraries = "libs/"
+tools = "tools/"
+demos = "demos/"
+documentation = "docs/"
+
+[critical-invariants]
+# Machines must not violate these. Full normative list lives in
+# contractiles/must/Mustfile.a2ml — this is the short-form summary.
+items = [
+  "Every source file carries SPDX-License-Identifier: AGPL-3.0-or-later",
+  "No C++ anywhere (banned estate-wide; Rust/SPARK is the alternative)",
+  "No Electron anywhere (estate JS runtime is Deno)",
+  "No Python (banned estate-wide 2026-01-03)",
+  "No package.json for runtime deps (Deno uses deno.json)",
+  "No monolithic engine directory (engine-agnostic design)",
+  "Every physics/chemistry constant cites CODATA / NIST / IUPAC",
+]
+
+[ai-agents-must]
+items = [
+  "Read the contractile trident A2ML files at session open.",
+  "Surface threat model + scope + obligations in plain language before substantive work.",
+  "Refuse suggestions that breach Mustfile invariants or trip Bustfile hard-stops without an amendment.",
+  "Never disable a probe / verification / invariant to unblock a merge — raise a variance or amendment.",
+  "At session close, re-run applicable checks; emit drift entries for any new failures.",
+]
+
+[ai-agents-must-not]
+items = [
+  "Conflate wishes with intents. Wishes are horizon; intents are commitments.",
+  "Accept 'great idea!' enthusiasm as consent to off-contract changes.",
+  "Run whimsical metaphors through operational / permission-affecting actions.",
+  "Fabricate commercial / market / adoption 'facts' without citation (A5 pattern).",
+  "Silently reintroduce retired or banned patterns (language-policy breach).",
+]
+
+[license-scope-note]
+rule = "hyperpolymath License Policy §Rule 3: projects co-developed with son use AGPL-3.0-or-later (same pattern as IDApTIK + Airborne Submarine Squadron). Not the default PMPL used for other hyperpolymath projects."

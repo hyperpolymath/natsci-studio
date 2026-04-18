@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Dustfile (A2ML Canonical) — rollback / deprecation / audit-trail policy
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Paired runner: dust.ncl | Paired K9: dust.k9.ncl (v1.0.0 — destructive_action_gating)
+
+@abstract:
+NatSci Studio rollback + deprecation + audit-trail preservation policy.
+Advisory (non-gating). Every retired library / deprecated API / removed
+capability requires a documented rollback path and preserved audit
+trail. Destructive actions run dry-run by default.
+@end
+
+[[retirements]]
+id = "library-retirement-template"
+description = "Template for retiring a library from libs/"
+rollback_path = "git tag libs-<name>-v<last-version> before removal; retain tag indefinitely"
+audit_trail = "append retirement summary to docs/retirements.adoc with date + rationale + rollback-path reference"
+status = "declared"
+notes = "Template only — no actual retirements yet."
+
+[[retirements]]
+id = "deprecated-api-policy"
+description = "Deprecated Haskell APIs must be marked {-# DEPRECATED #-} and kept for 2 releases before removal"
+rollback_path = "git tag v<last-present-version>"
+audit_trail = "CHANGELOG.md entry + deprecation reason + expected-removal date"
+status = "declared"

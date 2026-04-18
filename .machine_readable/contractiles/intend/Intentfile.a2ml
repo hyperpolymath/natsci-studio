@@ -1,0 +1,96 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Intentfile (A2ML Canonical) — north-star contractile for NatSci Studio
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+# Co-developed with son — AGPL per the IDApTIK + Airborne Submarine Squadron pattern.
+#
+# Paired runner: intend.ncl (canonical)
+# Paired K9:     intend.k9.ncl (v2.0.0 — negotiation + accountability)
+
+@abstract:
+NatSci Studio north star. An educational / research monorepo of
+natural-sciences libraries with a Haskell-backed TUI console. NOT a
+game engine, NOT a web app, NOT an Electron wrapper, NOT a commercial
+venture. Intents are concrete committed next-actions; wishes are the
+horizon; anything outside is scope creep.
+@end
+
+## Anti-Purpose
+
+- NOT a monolithic game engine (the sandbox/meta-engine is a far wish).
+- NOT an Electron app. JS tooling uses Deno.
+- NOT a C++ project. C++ is banned estate-wide.
+- NOT a commercial vehicle. "Billionaire in six weeks" style language
+  fails the Mustfile hype-word probe and the Bustfile commercial-hype probe.
+- NOT a surface to adopt whatever framework this week's AI suggests.
+
+## Committed Next-Actions
+
+[[intents]]
+id = "monorepo-foundation"
+description = "Standards-compliant monorepo: libs/, tools/, demos/, docs/"
+probe = "test -d libs && test -d tools && test -d demos && test -d docs"
+status = "declared"
+
+[[intents]]
+id = "haskell-console-minted"
+description = "NatTrans Console exists as a Brick-based Haskell TUI"
+probe = "test -f tools/console/app/Scaffold.hs && test -f tools/console/app/Verify.hs"
+status = "declared"
+notes = "btop++-inspired HUD, implemented in Haskell via Brick; NOT Electron, NOT Web."
+
+[[intents]]
+id = "spdx-headers-every-source-file"
+description = "Every source file in libs/ and tools/ has an SPDX-License-Identifier"
+probe = "! grep -rL 'SPDX-License-Identifier' libs tools --include='*.hs' --include='*.rs' --include='*.ncl' 2>/dev/null | grep -q ."
+status = "declared"
+
+[[intents]]
+id = "wcag-aa-on-tui"
+description = "NatTrans Console commits to WCAG 2.1 AA where applicable"
+probe = "test -f tools/console/WCAG-AUDIT.adoc"
+status = "declared"
+
+[[intents]]
+id = "continuous-compliance-monitor"
+description = "Verify.hs runs as a live compliance panel (not just a post-mint check)"
+probe = "grep -q 'continuousMonitor' tools/console/app/Verify.hs 2>/dev/null"
+status = "declared"
+notes = "Promoted from Le Chat 2026-03-14 suggestion into a committed intent."
+
+[[intents]]
+id = "dummy-newtonian-demo"
+description = "A Newtonian-mechanics library with an ASCII trajectory demo"
+probe = "test -d libs/newtonian-mechanics && test -f demos/newtonian-trajectory-ascii.hs"
+status = "declared"
+
+[[intents]]
+id = "deno-for-js-tooling"
+description = "Any JS-side tooling uses Deno; no package.json for runtime deps"
+probe = "! test -f package.json"
+status = "declared"
+notes = "Electron / Node / npm / pnpm / yarn / bun all banned."
+
+## Horizon Aspirations (wishes — NOT commitments)
+
+[[wishes]]
+id = "natsci-sandbox-meta-engine"
+description = "Lightweight meta-engine loading NatSci libraries and rendering 2D simulations"
+horizon = "far"
+why = "Demonstrates forge-and-observatory duality."
+status = "declared"
+notes = "WISH not intent. Building this now is scope creep; widening to intent needs an amendment."
+
+[[wishes]]
+id = "compliance-tutorial-mode"
+description = "Step-by-step tutorial wizard explaining each compliance standard"
+horizon = "mid"
+why = "Lowers contributor / educator barrier."
+status = "declared"
+
+[[wishes]]
+id = "philosophy-md"
+description = "Root-level PHILOSOPHY.md articulating the monk/veil Flammarion metaphor"
+horizon = "near"
+why = "Identity clarity. Metaphor is ILLUSTRATIVE, not operational."
+status = "declared"
+notes = "Le Chat 2026-03-14 suggested promoting to tagline — that's a scope shift requiring amendment. As a wish this is fine."
