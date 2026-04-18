@@ -1,6 +1,6 @@
 # Proof Requirements — {{PROJECT}}
 <!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
-<!-- Template: rsr-template-repo/PROOF-NEEDS.md -->
+<!-- Template: natsci-studio/PROOF-NEEDS.md -->
 <!-- Authoritative master list: ~/Desktop/PROOF-REQUIREMENTS-MASTER.md -->
 
 ## Proof Tier
@@ -22,7 +22,7 @@
 
 ## Mandatory Proofs (All RSR Repos)
 
-These proofs come from the rsr-template-repo and MUST be present in every repo:
+These proofs come from the natsci-studio and MUST be present in every repo:
 
 ### ABI/FFI Boundary Proofs (Idris2)
 
@@ -100,4 +100,4 @@ verification/proofs/
 - Master list: `~/Desktop/PROOF-REQUIREMENTS-MASTER.md`
 - Proof status tracking: `PROOF-STATUS.md` (this repo)
 - Proven library: `proven` repo (Idris2 verified foundations)
-- Template: `rsr-template-repo/PROOF-NEEDS.md`
+- Template: `natsci-studio/PROOF-NEEDS.md`

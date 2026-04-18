@@ -1,6 +1,6 @@
 # Proof Status — {{PROJECT}}
 <!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
-<!-- Template: rsr-template-repo/PROOF-STATUS.md -->
+<!-- Template: natsci-studio/PROOF-STATUS.md -->
 <!-- Tracks proof completion. Requirements defined in PROOF-NEEDS.md -->
 
 ## Summary

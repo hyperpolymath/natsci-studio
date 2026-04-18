@@ -1,4 +1,4 @@
-# TEST-NEEDS: rsr-template-repo
+# TEST-NEEDS: natsci-studio
 
 ## CRG Grade: C — ACHIEVED 2026-04-04
 
