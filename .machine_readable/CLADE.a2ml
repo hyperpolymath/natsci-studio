@@ -13,7 +13,7 @@ prefixed-name = "rm-natsci-studio"
 primary = "rm"
 secondary = ["gv"]
 assigned = "2026-03-16"
-rationale = ""
+rationale = "rm (research/methods) is the primary clade: NatSci Studio is a natural-sciences studio environment — a NatTrans Console host with Haskell backend, son-co-developed, pedagogy-adjacent. Secondary gv (governance/vocabulary) covers the adversarial Gemini+Copilot drift-pressure pilot role the repo takes for contractile-enforcement rules. Fresh clade scoping 2026-04-19."
 
 [forges]
 github = "hyperpolymath/natsci-studio"

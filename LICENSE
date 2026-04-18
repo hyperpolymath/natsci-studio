@@ -1,31 +1,41 @@
 SPDX-License-Identifier: AGPL-3.0-or-later
-SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
-NatSci Studio is licensed under the GNU Affero General Public License,
-version 3 or later (AGPL-3.0-or-later). This follows the hyperpolymath
-estate convention that projects co-developed with son are AGPL — same
-pattern as IDApTIK + Airborne Submarine Squadron. See
-~/.claude/CLAUDE.md "License Policy §Rule 3" for the canonical rule.
+------------------------------------------------------------------------
+PROJECT LICENCE: GNU Affero General Public License v3.0 or later
+------------------------------------------------------------------------
 
-The full AGPL-3.0 licence text lives at:
+This project is co-developed and is governed by the GNU Affero General
+Public License, Version 3.0 or any later version (AGPL-3.0-or-later).
+
+------------------------------------------------------------------------
+COMPONENT LICENSING NOTE
+------------------------------------------------------------------------
+
+Individual components originally authored solely by Jonathan D.A. Jewell
+(hyperpolymath) are independently governed by the Palimpsest License
+(PMPL-1.0-or-later), with MPL-2.0 as automatic legal fallback until
+PMPL achieves formal recognition. See:
+  https://github.com/hyperpolymath/palimpsest-license
+
+When these components are used within this project, the project-level
+AGPL-3.0-or-later applies. When extracted and used independently, the
+component's own PMPL-1.0-or-later / MPL-2.0 terms govern.
+
+------------------------------------------------------------------------
+
+The complete AGPL-3.0 text is available at:
   https://www.gnu.org/licenses/agpl-3.0.txt
 
-TODO (Jonathan): swap this stub for the full AGPL-3.0 text verbatim
-before any public release. Until then, the SPDX-License-Identifier
-header above declares the intended licence; the file serves as a
-pointer to the canonical text.
+This project is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-Copyright (c) 2026 Jonathan D.A. Jewell and contributors.
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+This project is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with this program. If not, see
-<https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License
+along with this project. If not, see <https://www.gnu.org/licenses/>.
