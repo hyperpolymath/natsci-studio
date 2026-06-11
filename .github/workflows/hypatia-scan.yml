@@ -4,6 +4,8 @@
 # See standards#191 for the reusable's purpose and design.
 
 name: Hypatia Security Scan
+
+name: Hypatia Security Scan
 on:
   push:
     branches: [main, master, develop]
