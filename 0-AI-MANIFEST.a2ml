@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 #
 # 0-AI-MANIFEST.a2ml — universal entry point for ALL AI agents
@@ -38,7 +38,7 @@ documentation = "docs/"
 # Machines must not violate these. Full normative list lives in
 # contractiles/must/Mustfile.a2ml — this is the short-form summary.
 items = [
-  "Every source file carries SPDX-License-Identifier: AGPL-3.0-or-later",
+  "Every source file carries SPDX-License-Identifier: MPL-2.0",
   "No C++ anywhere (banned estate-wide; Rust/SPARK is the alternative)",
   "No Electron anywhere (estate JS runtime is Deno)",
   "No Python (banned estate-wide 2026-01-03)",
