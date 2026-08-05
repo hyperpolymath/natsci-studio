@@ -2,7 +2,7 @@
 SPDX-License-Identifier: CC-BY-SA-4.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# Proof Status — {{PROJECT}}
+# Proof Status — NATSCI_STUDIO
 <!-- Template: natsci-studio/PROOF-STATUS.md -->
 <!-- Tracks proof completion. Requirements defined in PROOF-NEEDS.md -->
 

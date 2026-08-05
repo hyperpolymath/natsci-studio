@@ -2,7 +2,7 @@
 SPDX-License-Identifier: CC-BY-SA-4.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# Proof Requirements — {{PROJECT}}
+# Proof Requirements — NATSCI_STUDIO
 <!-- Template: natsci-studio/PROOF-NEEDS.md -->
 <!-- Authoritative master list: ~/Desktop/PROOF-REQUIREMENTS-MASTER.md -->
 
