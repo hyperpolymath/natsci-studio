@@ -1,0 +1,32 @@
+== natsci-studio — Topology
+
+=== System Overview
+
+Monorepo of natural-sciences libraries plus a Haskell-backed TUI console
+(NatTrans Console). Contractile-first: every substantive change is gated
+by the verb tridents under `+.machine_readable/contractiles/+`.
+
+=== Component Overview
+
+[width="100%",cols="25%,17%,58%",options="header",]
+|===
+|Component |Language |Purpose
+|NatTrans Console |Haskell |TUI for minting / verifying / observing
+libraries.
+
+|libs/* |mixed |Natural-sciences libraries (one per topic).
+
+|contractile tridents |A2ML + Nickel |Normative obligations
+(intend/trust/must/bust/adjust/dust).
+
+|6a2/* |A2ML |Descriptive state (what IS — opposed to ought).
+|===
+
+=== Integration Points
+
+* *Upstream*: `+standards/+` provides the canonical trident machinery.
+* *Downstream (future)*: educational / research consumers.
+
+=== Deployment
+
+Not yet containerised. Scaffold stage.
