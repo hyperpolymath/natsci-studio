@@ -1,3 +1,4 @@
+# This workflow is managed by gh actions-lock.
 # SPDX-License-Identifier: MPL-2.0
 # // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 # SPDX-License-Identifier: MPL-2.0
@@ -14,4 +15,4 @@ permissions:
   contents: read
 jobs:
   rust-ci:
-    uses: hyperpolymath/standards/.github/workflows/rust-ci-reusable.yml@5b1d00229e5e8c0c0fbfedc7e80f37ea50f49236
+    uses: hyperpolymath/standards/.github/workflows/rust-ci-reusable.yml@da2c748aad55c1a1dcba00b60fe4a35017bc6540
