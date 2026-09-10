@@ -3,6 +3,8 @@
 name: OSSF Scorecard
 
 on:
+  pull_request:
+    branches: ["**"]
   schedule:
     - cron: '0 4 * * *'
   workflow_dispatch:
