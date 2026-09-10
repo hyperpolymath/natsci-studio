@@ -8,8 +8,8 @@ K9!
 # WARNING: This component can execute shell commands!
 # It requires explicit authorisation via the Leash system.
 #
-# Usage:
-#   nickel typecheck container/deploy.k9.ncl
+# Usage (after just init replaces the project and numeric port placeholders):
+#   bash scripts/validate-session-contracts.sh --typecheck container/deploy.k9.ncl
 #   k9-svc validate container/deploy.k9.ncl
 #   k9-svc deploy container/deploy.k9.ncl --env production
 
