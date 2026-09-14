@@ -1,3 +1,4 @@
+K9!
 # SPDX-License-Identifier: MPL-2.0
 # deploy.k9.ncl — {{PROJECT_NAME}} deployment component (Hunt level)
 #
@@ -143,7 +144,14 @@ echo "K9: Rollback complete."
 
 # Export the component
 {
-  pedigree = component_pedigree,
+  # Expose the standard top-level K9 identity fields while retaining the
+  # detailed L1-L5 pedigree assembled above.
+  pedigree = component_pedigree & {
+    name = component_pedigree.metadata.name,
+    schema_version = component_pedigree.validation.pedigree_version,
+    leash = 'Hunt,
+    signature = component_pedigree.security.signature,
+  },
   deployment = deployment,
   scripts = scripts,
 
