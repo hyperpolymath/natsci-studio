@@ -128,8 +128,8 @@ detect_platform() {
 }
 
 # ── Install just ──
-# Install just with the detected package manager unless it is already available.
-# Return failure if the package manager is unsupported or just remains unavailable.
+# Ensure just is available, installing it through the detected package manager if needed.
+# Return failure if no supported manager is available or installation does not provide just.
 install_just() {
     if command -v just >/dev/null 2>&1; then
         ok "just already installed: $(just --version 2>/dev/null | head -1)"
