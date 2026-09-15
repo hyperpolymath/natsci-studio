@@ -5,16 +5,14 @@
 # Detects your shell, platform, and installs prerequisites.
 # Then hands off to `just setup` for project-specific configuration.
 #
-# Usage (after cloning):
+# Usage:
+#   curl -fsSL https://raw.githubusercontent.com/hyperpolymath/natsci-studio/main/setup.sh | sh
+#   # or after cloning:
 #   ./setup.sh
 #
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath)
 
 set -eu
-
-# Pin the Cargo fallback so setup does not execute an unversioned remote
-# installer and produces the same task-runner version on every platform.
-JUST_VERSION="1.58.0"
 
 # ── Colours (safe — uses symbols too per ADJUST contractile) ──
 if [ -t 1 ] && command -v tput >/dev/null 2>&1; then
@@ -131,17 +129,6 @@ detect_platform() {
 }
 
 # ── Install just ──
-install_just_with_cargo() {
-    if ! command -v cargo >/dev/null 2>&1; then
-        fail "Could not install just: no supported package or Cargo installation found"
-        info "Install just manually: https://just.systems/man/en/packages.html"
-        return 1
-    fi
-
-    info "Installing just ${JUST_VERSION} with Cargo's verified package registry..."
-    cargo install --locked --version "$JUST_VERSION" just
-}
-
 install_just() {
     if command -v just >/dev/null 2>&1; then
         ok "just already installed: $(just --version 2>/dev/null | head -1)"
@@ -152,7 +139,10 @@ install_just() {
 
     case "$PKG_MGR" in
         dnf)        sudo dnf install -y just ;;
-        apt)        sudo apt-get install -y just 2>/dev/null || install_just_with_cargo ;;
+        apt)        sudo apt-get install -y just 2>/dev/null || {
+                        # just not in older apt repos — use installer
+                        curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+                    } ;;
         pacman)     sudo pacman -S --noconfirm just ;;
         apk)        sudo apk add just ;;
         brew)       brew install just ;;
@@ -162,7 +152,8 @@ install_just() {
         guix)       guix install just ;;
         nix)        nix-env -iA nixpkgs.just ;;
         *)
-            install_just_with_cargo
+            info "Using just installer script..."
+            curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
             ;;
     esac
 
