@@ -27,7 +27,7 @@ co-developed-with = "son"
 
 [canonical-locations]
 contractiles = ".machine_readable/contractiles/"
-state-descriptive = ".machine_readable/6a2/"
+state-descriptive = ".machine_readable/descriptiles/"
 recalibration-records = ".machine_readable/anchors/"
 source-libraries = "libs/"
 tools = "tools/"
