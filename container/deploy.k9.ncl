@@ -8,8 +8,8 @@ K9!
 # WARNING: This component can execute shell commands!
 # It requires explicit authorisation via the Leash system.
 #
-# Usage (after just init replaces the project and numeric port placeholders):
-#   bash scripts/validate-session-contracts.sh --typecheck container/deploy.k9.ncl
+# Usage:
+#   nickel typecheck container/deploy.k9.ncl
 #   k9-svc validate container/deploy.k9.ncl
 #   k9-svc deploy container/deploy.k9.ncl --env production
 
@@ -144,13 +144,13 @@ echo "K9: Rollback complete."
 
 # Export the component
 {
+  # Expose the standard top-level K9 identity fields while retaining the
+  # detailed L1-L5 pedigree assembled above.
   pedigree = component_pedigree & {
     name = component_pedigree.metadata.name,
-    version = component_pedigree.metadata.version,
-    security = component_pedigree.security & {
-      leash = 'Hunt,
-      signature = component_pedigree.security.signature,
-    },
+    schema_version = component_pedigree.validation.pedigree_version,
+    leash = 'Hunt,
+    signature = component_pedigree.security.signature,
   },
   deployment = deployment,
   scripts = scripts,
