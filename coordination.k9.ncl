@@ -5,18 +5,12 @@ K9!
 {
   pedigree = {
     schema_version = "1.0.0",
-    component_type = "session-coordination",
-    security = {
-      leash = 'Kennel,
-      trust_level = "data-only",
-      allow_network = false,
-      allow_filesystem_write = false,
-      allow_subprocess = false,
-    },
     metadata = {
       name = "session-coordination",
       version = "0.1.0",
-      description = "Bindings for the central session-management standards",
+    },
+    security = {
+      leash = 'Kennel,
     },
   },
 

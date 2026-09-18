@@ -1,7 +1,10 @@
+# This workflow is managed by gh actions-lock.
 # SPDX-License-Identifier: MPL-2.0
 name: OSSF Scorecard
 
 on:
+  pull_request:
+    branches: ["**"]
   schedule:
     - cron: '0 4 * * *'
   workflow_dispatch:

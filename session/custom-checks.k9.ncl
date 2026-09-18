@@ -5,22 +5,15 @@ K9!
 {
   pedigree = {
     schema_version = "1.0.0",
-    component_type = "session-policy",
+    metadata = {
+      name = "custom-session-checks",
+      version = "0.1.0",
+    },
     security = {
       leash = 'Kennel,
-      trust_level = "data-only",
-      allow_network = false,
-      allow_filesystem_write = false,
-      allow_subprocess = false,
-    },
-    metadata = {
-      name = "session-custom-checks",
-      version = "0.1.0",
-      description = "Repository-local session state checks",
     },
   },
 
-  version = "0.1",
   checks = [
     {
       id = "session-state-has-next-action",
