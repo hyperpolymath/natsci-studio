@@ -1,0 +1,3 @@
+# SPDX-License-Identifier: MPL-2.0
+# Prettier must not reformat package.json.
+package.json

@@ -40,9 +40,9 @@ documentation = "docs/"
 items = [
   "Every source file carries SPDX-License-Identifier: MPL-2.0",
   "No C++ anywhere (banned estate-wide; Rust/SPARK is the alternative)",
-  "No Electron anywhere (estate JS runtime is Deno)",
+  "No Electron anywhere (estate JS runtime is Bun first)",
   "No Python (banned estate-wide 2026-01-03)",
-  "No package.json for runtime deps (Deno uses deno.json)",
+  "JS deps via package.json + bun.lock only (Bun first)",
   "No monolithic engine directory (engine-agnostic design)",
   "Every physics/chemistry constant cites CODATA / NIST / IUPAC",
 ]
