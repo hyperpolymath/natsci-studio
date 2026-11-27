@@ -25,7 +25,7 @@
 
 # BANNED LANGUAGES
 # TypeScript -> AffineScript
-# Node.js / npm / yarn / Deno -> Bun (Bun first)
+# Node.js / yarn -> Bun first; Deno, pnpm, npm as fallbacks
 # Go -> Rust
 # Python -> Julia or Rust
 
